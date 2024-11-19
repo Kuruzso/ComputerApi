@@ -57,5 +57,21 @@ namespace ComputerApi.Controllers
             return StatusCode(404,new {message = "Nincs Találat."});
 
         }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<OSystem>> Put(UpdateOsDto updateOsDto, Guid id)
+        {
+
+            var existingOs = await computerContext.Os.FirstOrDefaultAsync(o => o.Id == id);
+
+            if (existingOs != null) {
+                existingOs.Name =  updateOsDto.Name;
+                computerContext.Os.Update(existingOs);
+                await computerContext.SaveChangesAsync();
+                return Ok(existingOs);
+            }
+            return NotFound(new {message = "Nincs ilyen" });
+
+
+        }
     }
 }
