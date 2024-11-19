@@ -73,5 +73,18 @@ namespace ComputerApi.Controllers
 
 
         }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<OSystem>> Delet(Guid id) {
+
+            var os = await computerContext.Os.FirstOrDefaultAsync(o => o.Id == id);
+            if (os != null)
+            {
+              
+                computerContext.Os.Remove(os);
+                await computerContext.SaveChangesAsync();
+                return Ok(new {message = "Siker" });
+            }
+            return NotFound(new { message = " nem Siker" });
+        }
     }
 }
