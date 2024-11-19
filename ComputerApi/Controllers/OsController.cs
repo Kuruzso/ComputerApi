@@ -34,13 +34,28 @@ namespace ComputerApi.Controllers
             return BadRequest();
         }
         [HttpGet]
-        public async Task <ActionResult<OSystem>> Get() {
+        public async Task<ActionResult<OSystem>> Get() {
 
 
 
             return Ok(await computerContext.Os.ToListAsync());
-        
-            
+
+
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<OSystem>> GetById(Guid id)
+        {
+
+
+
+            var os = await computerContext.Os.FirstOrDefaultAsync(o => o.Id == id);
+            if (os != null)
+            {
+                return Ok(os);
+            }
+            return StatusCode(404,new {message = "Nincs Találat."});
+
         }
     }
 }
