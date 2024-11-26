@@ -34,7 +34,8 @@ namespace ComputerApi.Controllers
             return BadRequest();
         }
         [HttpGet]
-        public async Task<ActionResult<OSystem>> Get() {
+        public async Task<ActionResult<OSystem>> Get()
+        {
 
 
 
@@ -54,7 +55,7 @@ namespace ComputerApi.Controllers
             {
                 return Ok(os);
             }
-            return StatusCode(404,new {message = "Nincs Találat."});
+            return StatusCode(404, new { message = "Nincs Találat." });
 
         }
         [HttpPut("{id}")]
@@ -63,28 +64,35 @@ namespace ComputerApi.Controllers
 
             var existingOs = await computerContext.Os.FirstOrDefaultAsync(o => o.Id == id);
 
-            if (existingOs != null) {
-                existingOs.Name =  updateOsDto.Name;
+            if (existingOs != null)
+            {
+                existingOs.Name = updateOsDto.Name;
                 computerContext.Os.Update(existingOs);
                 await computerContext.SaveChangesAsync();
                 return Ok(existingOs);
             }
-            return NotFound(new {message = "Nincs ilyen" });
+            return NotFound(new { message = "Nincs ilyen" });
 
 
         }
         [HttpDelete("{id}")]
-        public async Task<ActionResult<OSystem>> Delet(Guid id) {
+        public async Task<ActionResult<OSystem>> Delet(Guid id)
+        {
 
             var os = await computerContext.Os.FirstOrDefaultAsync(o => o.Id == id);
             if (os != null)
             {
-              
+
                 computerContext.Os.Remove(os);
                 await computerContext.SaveChangesAsync();
-                return Ok(new {message = "Siker" });
+                return Ok(new { message = "Siker" });
             }
             return NotFound(new { message = " nem Siker" });
+        }
+        [HttpGet("withAllComputer")]
+        public async Task<ActionResult<OSystem>> GetWithAllComputer()
+        {
+            return Ok(await computerContext.Os.Include(os => os.Comps).ToListAsync());
         }
     }
 }

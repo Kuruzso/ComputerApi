@@ -1,5 +1,6 @@
 using ComputerApi.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace ComputerApi
 {
@@ -8,6 +9,7 @@ namespace ComputerApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             builder.Services.AddDbContext<ComputerContext>(option => {
 

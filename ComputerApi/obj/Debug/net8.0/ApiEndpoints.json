@@ -46,6 +46,87 @@
     ]
   },
   {
+    "ContainingType": "ComputerApi.Controllers.ComputerController",
+    "Method": "Put",
+    "RelativePath": "computer/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateCompDto",
+        "Type": "ComputerApi.Models.UpdateCompDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ComputerApi.Models.Comp",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ComputerApi.Controllers.ComputerController",
+    "Method": "GetAllOsComputer",
+    "RelativePath": "computer/allWindowsOsComputer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "ComputerApi.Models.Comp",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ComputerApi.Controllers.ComputerController",
+    "Method": "GetNumberOfComputers",
+    "RelativePath": "computer/numberOfComputers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputerApi.Controllers.ComputerController",
+    "Method": "OsOrderDescendant",
+    "RelativePath": "computer/osOrderDescendant",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "ComputerApi.Models.Comp",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "ComputerApi.Controllers.OsController",
     "Method": "Post",
     "RelativePath": "osystem",
@@ -162,6 +243,26 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": [
+      {
+        "Type": "ComputerApi.Models.OSystem",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ComputerApi.Controllers.OsController",
+    "Method": "GetWithAllComputer",
+    "RelativePath": "osystem/withAllComputer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "ComputerApi.Models.OSystem",
