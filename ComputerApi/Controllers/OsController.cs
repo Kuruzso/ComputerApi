@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ComputerApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("osystem")]
     [ApiController]
     public class OsController : ControllerBase
     {
